@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header%}
+    {% block title %}
+        <title>Update Page</title>
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+<br>
+        <form action="/posts/update/{{post.id}}" method="POST">
+            <div class="form-group">
+                <h2>Update Post {{post.id}}</h2>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>  
+                <input type="text" class="form-control" name="title" id="title" value="{{post.title}}">
+            </div>
+            <div class="form-group">
+                <label for="Author">Author</label>  
+                <input type="text" class="form-control" name="author" id="author" value="{{post.author}}">
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label> 
+                <textarea type="text" class="form-control" name="content" id="content">{{post.content}}</textarea>
+            </div>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Update">
+        </form>
+        <hr>
+{% endblock %}

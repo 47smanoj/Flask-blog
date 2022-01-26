@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header%}
+    {% block title %}
+        <title>Index Page</title>
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="container" style="margin-left: 0; padding-left: 0; display: inline-block;">
+        <h2>Previous Posts <a class="btn btn-primary" style="float: right;" href="/posts/create">Create New Post</a></h2>
+        
+        <hr>
+    </div>
+    <br>
+    {% for post in posts %}
+        {% if post.author != Null %}
+            <div class="blog-title">
+                <h3>{{ post.title }}</h3>
+                <small>Author: <a href="#">{{ post.author}}</a>, Posted on: <i>{{ post.date_posted.strftime("%d-%b-%Y %H:%M") }}</i></small>
+            </div>
+            <div class="blog-body">
+                <p style="white-space: pre-wrap;">{{ post.content }}</p>
+            </div>
+            <a class="btn btn-danger" href="/posts/delete/{{post.id}}">Delete</a>
+            <a class="btn btn-primary" href="/posts/update/{{post.id}}">Update</a>
+
+            <hr>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
